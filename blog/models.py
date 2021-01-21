@@ -11,11 +11,10 @@ class Post(models.Model):
 
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
-    #author : 추후 작성 예정
 
     def __str__(self):
         return f'[{self.pk}]{self.title}'
-    
+
     def get_absolute_url(self):
         return f'/blog/{self.pk}/'
 
@@ -24,5 +23,4 @@ class Post(models.Model):
 
     def get_file_ext(self):
         return self.get_file_name().split('.')[-1]
-
 # Create your models here.

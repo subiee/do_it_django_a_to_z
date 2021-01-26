@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from django.views.generic import ListView, DetailView
+from django.views.generic import ListView, DetailView, CreateView
 from .models import Post, Category, Tag
 
 
@@ -23,6 +23,12 @@ class PostDetail(DetailView):
         context['no_category_post_count'] = Post.objects.filter(category=None).count()
         return context
 
+
+class PostCreate(CreateView):
+    model = Post
+    fields = ['title', 'hook_text', 'content', 'head_image', 'file_upload', 'category']
+
+
 def category_page(request, slug):
     if slug == 'no_category':
         category = '미분류'
@@ -42,6 +48,7 @@ def category_page(request, slug):
         }
     )
 
+
 def tag_page(request, slug):
     tag = Tag.objects.get(slug=slug)
     post_list = tag.post_set.all()
@@ -56,25 +63,23 @@ def tag_page(request, slug):
             'no_category_post_count': Post.objects.filter(category=None).count(),
         }
     )
-    
 
-    
-  
 
 # def index(request):
 #     posts = Post.objects.all().order_by('-pk')
-
+#
 #     return render(
 #         request,
 #         'blog/index.html',
 #         {
-#             'posts':posts,
+#             'posts': posts,
 #         }
 #     )
 
+
 # def single_post_page(request, pk):
 #     post = Post.objects.get(pk=pk)
-
+#
 #     return render(
 #         request,
 #         'blog/single_post_page.html',
@@ -82,5 +87,3 @@ def tag_page(request, slug):
 #             'post': post,
 #         }
 #     )
-
-# Create your views here.

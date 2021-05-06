@@ -1,2 +1,1 @@
-# do_it_django_a_to_z
-이지스퍼블리싱 Do it 파이썬 웹 프로그래밍 Django A to Z
+# 파이썬 장고프레임워크/ 블로그,댓글,회원가입&로그인, 도커&AWS lite sail을 이용한 서버 도메인 연결
